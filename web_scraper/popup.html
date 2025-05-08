@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Website Analyzer</title>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: sans-serif; width: 400px; padding: 10px; }
+        /* Consolidated results into a single div */
+        #analysisOutput div p { margin: 5px 0; word-wrap: break-word;}
+        input[type="url"] { width: 95%; margin-bottom: 10px; }
+        button { width: 100%; padding: 8px; margin-bottom:10px;}
+        h3 { margin-top: 0;} /* Main title */
+        .page-analysis-block {
+            border: 1px solid #ddd;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        .page-analysis-block h4 { /* For page URLs */
+            margin-top:0;
+            margin-bottom: 8px;
+            font-size: 1em;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .page-analysis-block h4 .page-type {
+            font-size: 0.8em;
+            color: #555;
+            font-weight: normal;
+        }
+        code { background-color: #e8e8e8; padding: 2px 4px; border-radius: 3px;}
+        #loadingStatus { font-style: italic; color: gray; margin-bottom: 10px;}
+    </style>
+</head>
+<body>
+    <h3>Website Analyzer Pro</h3>
+    <input type="url" id="urlInput" placeholder="Current tab will be used if empty">
+    <button id="analyzeBtn">Analyze Page & Related</button>
+    <div id="loadingStatus"></div>
+
+    <div id="analysisOutput">
+        <p>Click "Analyze" to see website details.</p>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
