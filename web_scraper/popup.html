@@ -1,41 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Website Analyzer</title>
+    <title>Analyze When?</title>
     <meta charset="utf-8">
     <style>
         body { font-family: sans-serif; width: 400px; padding: 10px; }
-        /* Consolidated results into a single div */
-        #analysisOutput div p { margin: 5px 0; word-wrap: break-word;}
-        input[type="url"] { width: 95%; margin-bottom: 10px; }
-        button { width: 100%; padding: 8px; margin-bottom:10px;}
+        #analysisOutput div p, #analysisOutput p, #nextStepsOutput p { margin: 5px 0; word-wrap: break-word;}
+        input[type="url"] { width: 95%; margin-bottom: 10px; padding: 5px; border: 1px solid #ccc; border-radius: 4px; }
+        button { width: 100%; padding: 8px; margin-bottom:10px; cursor: pointer; border: 1px solid #aaa; border-radius: 4px; background-color: #f0f0f0; }
+        button:hover { background-color: #e0e0e0; }
+        button:disabled { cursor: not-allowed; opacity: 0.6; }
+        #analyzeBtn { background-color: #4CAF50; color: white; border-color: #4CAF50; }
+        #analyzeBtn:hover { background-color: #45a049; }
+        #copyResultsBtn, #draftNextStepsBtn, #copyNextStepsBtn {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+            margin-top: 10px; /* Spacing */
+            display: none; /* Hidden initially */
+         }
+        #copyResultsBtn:hover, #draftNextStepsBtn:hover, #copyNextStepsBtn:hover { background-color: #0056b3; }
+        #draftNextStepsBtn { background-color: #ff9800; border-color: #ff9800; } /* Orange */
+        #draftNextStepsBtn:hover { background-color: #f57c00; }
         h3 { margin-top: 0;} /* Main title */
-        .page-analysis-block {
-            border: 1px solid #ddd;
-            padding: 8px;
-            margin-bottom: 10px;
-            border-radius: 4px;
-            background-color: #f9f9f9;
-        }
-        .page-analysis-block h4 { /* For page URLs */
-            margin-top:0;
-            margin-bottom: 8px;
-            font-size: 1em;
-            color: #333;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
-        }
-        .page-analysis-block h4 .page-type {
-            font-size: 0.8em;
-            color: #555;
-            font-weight: normal;
-        }
-        code { background-color: #e8e8e8; padding: 2px 4px; border-radius: 3px;}
+        code { background-color: #e8e8e8; padding: 2px 4px; border-radius: 3px; font-family: monospace;}
         #loadingStatus { font-style: italic; color: gray; margin-bottom: 10px;}
+        hr { border: 0; border-top: 1px solid #eee; margin: 15px 0; } /* Increased margin */
+        #nextStepsOutput { margin-top: 10px; padding: 10px; border: 1px dashed #ccc; border-radius: 4px; background-color: #fdfdfd; display: none; /* Hidden initially */ }
+        #nextStepsOutput p { margin-bottom: 10px; line-height: 1.4; }
     </style>
 </head>
 <body>
-    <h3>Website Analyzer Pro</h3>
+    <h3>Analyze When?</h3>
     <input type="url" id="urlInput" placeholder="Current tab will be used if empty">
     <button id="analyzeBtn">Analyze Page & Related</button>
     <div id="loadingStatus"></div>
@@ -43,6 +39,15 @@
     <div id="analysisOutput">
         <p>Click "Analyze" to see website details.</p>
     </div>
+
+    <button id="copyResultsBtn">Copy Results</button>
+
+    <button id="draftNextStepsBtn">Draft Next Steps Items</button>
+
+    <div id="nextStepsOutput">
+        </div>
+    <button id="copyNextStepsBtn">Copy Next Steps</button>
+
 
     <script src="popup.js"></script>
 </body>
